@@ -1,0 +1,8 @@
+/philo/philo
+a.out
+obj
+.DS_Store
+.vscode
+*.txt
+*.o
+*.a
