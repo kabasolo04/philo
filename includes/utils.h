@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:28:39 by kabasolo          #+#    #+#             */
-/*   Updated: 2024/09/02 16:41:50 by kabasolo         ###   ########.fr       */
+/*   Updated: 2025/03/10 14:31:27 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@
 # include <unistd.h>    // write, usleep
 # include <sys/time.h>  // gettimeofday
 
-# define SET 0
-# define GET 1
+void	zzz(int ms, t_data *data, int last_meal, int id);
+int		mod_print(int id, char *line, t_data *data);
+int		my_time(void);
 
-void		mod_print(int id, char *line, t_data *data);
-void		status(t_data *data, long int last_meal, int id);
-long int	my_time(int mood, t_data *data);
-int			ft_atoi(char *line);
+int		parsing(int argc, char **argv, t_data *data);
+int		freedom(t_data *data);
 
 #endif //UTILS_H

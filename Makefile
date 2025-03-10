@@ -5,6 +5,7 @@ CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=leak
 RM		= rm -f
 
 SRC =	src/utils.c \
+		src/parsing.c \
 		src/actions.c \
 		src/threads.c \
 		src/main.c \
