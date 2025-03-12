@@ -6,7 +6,7 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/28 14:00:55 by kabasolo          #+#    #+#             */
-/*   Updated: 2025/03/10 14:49:17 by kabasolo         ###   ########.fr       */
+/*   Updated: 2025/03/12 12:49:58 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	wait_fork(int id, int fork_id, t_data *data, int last_meal)
 {
 	pthread_mutex_lock(&data->fork_lock[fork_id]);
 	pthread_mutex_lock(&data->read);
-	while (!take_fork(id, fork_id, data) && data->stop == 0)
+	while (data->stop == 0 && !take_fork(id, fork_id, data))
 	{
 		pthread_mutex_unlock(&data->fork_lock[fork_id]);
 		pthread_mutex_unlock(&data->read);
