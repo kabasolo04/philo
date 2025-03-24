@@ -6,11 +6,29 @@
 /*   By: kabasolo <kabasolo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/21 11:02:20 by kabasolo          #+#    #+#             */
-/*   Updated: 2025/03/10 14:33:20 by kabasolo         ###   ########.fr       */
+/*   Updated: 2025/03/24 12:18:10 by kabasolo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+void	status(t_data *data, int last_meal, int id)
+{
+	pthread_mutex_lock(&data->read);
+	if (!data->stop && my_time() - last_meal >= data->time_to_die)
+	{
+		printf("%d %d died\n", my_time(), id);
+		pthread_mutex_unlock(&data->write);
+		pthread_mutex_lock(&data->write);
+		while (data->stop == 0)
+		{
+			pthread_mutex_unlock(&data->write);
+			usleep(100000);
+			pthread_mutex_lock(&data->write);
+		}
+	}
+	pthread_mutex_unlock(&data->read);
+}
 
 void	zzz(int ms, t_data *data, int last_meal, int id)
 {
